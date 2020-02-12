@@ -1,14 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class Zombie : MonoBehaviour
 {
 
+    public GameObject effectDead;
     public GameObject effect;
     public Rigidbody2D rb;
     public Rigidbody2D player;
-    public float speed= 5f;
+    public float speed = 5f;
+    public Text scoreCounter;
+    public float score =5;
+   
+
+
+
+    public int health = 100;
+    public int armor = 3;
 
 
     Vector2 movement;
@@ -19,7 +30,7 @@ public class Zombie : MonoBehaviour
     {
         GameObject[] firstList = GameObject.FindObjectsOfType<GameObject>();
         List<Object> finalList = new List<Object>();
-        string nameToLoogFor = "Player";
+        string nameToLoogFor = "SoldierRifle";
         for(var i = 0; i < firstList.Length; i++)
         {
             if (firstList[i].gameObject.name == nameToLoogFor)
@@ -27,7 +38,7 @@ public class Zombie : MonoBehaviour
                 player = firstList[i].GetComponent<Rigidbody2D>();
             }
         }
-
+        
     }
 
     // Update is called once per frame
@@ -42,8 +53,24 @@ public class Zombie : MonoBehaviour
         {
             GameObject bloodsplatter = Instantiate(effect, transform.position, Quaternion.identity);
             Destroy(bloodsplatter, 20f);
+            if (collision.gameObject.GetComponent<Bullet>().damage - armor > 1)
+            {
+                health -= (collision.gameObject.GetComponent<Bullet>().damage - armor);
+            }
+            else
+            {
+                health -= 1;
+            }
+            
+            if (health <= 0)
+            {
+                GameObject bloodsplatterDead = Instantiate(effectDead, transform.position, Quaternion.identity);
+                SendMessageUpwards("incScore");
+                Destroy(bloodsplatterDead, 20f);
+                Destroy(gameObject);
 
-            Destroy(gameObject);
+            }
+            
         }
         
     }

@@ -23,7 +23,6 @@ public class CameraControl : MonoBehaviour
         camPlacement.y = lookAt.y / reverse_zoom + player.position.y;
         camPlacement.z = -10;
 
-        Debug.Log(camPlacement);
         
         cam.transform.position = (camPlacement);
 

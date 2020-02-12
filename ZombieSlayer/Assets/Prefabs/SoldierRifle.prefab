@@ -111,6 +111,15 @@ MonoBehaviour:
   flashTime: 0.05
   flashBrightness: 5
   bang: {fileID: 2567412633017265887}
+  muzzleSparks: {fileID: 596307807175597280, guid: 34ed35bd11a2ecc488ddfd6266183c2d,
+    type: 3}
+  Health: 400
+  rounds: 6
+  fullReloadTime: 2
+  loseScreen: {fileID: 0}
+  effectDead: {fileID: 8760779316517619206, guid: 58f5975ad7395434198b956da7d9719c,
+    type: 3}
+  effect: {fileID: 6172049661103395796, guid: 1ee467eb80383154ab867852d5603549, type: 3}
   bulletForce: 100
   loaded: 1
 --- !u!50 &316798413622564503
@@ -290,7 +299,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 15
+  m_Range: 8
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10

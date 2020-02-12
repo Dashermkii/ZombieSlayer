@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
 
     public GameObject rb;
+    public int damage = 33;
     // Start is called before the first frame update
     void Start()
     {
